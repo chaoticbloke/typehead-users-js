@@ -1,0 +1,23 @@
+.container {
+    width: 300px; /* Set a fixed width for the container */
+  }
+
+  input {
+	padding: 5px 0;
+    width: 100%; 
+    box-sizing: border-box;
+  }
+
+  .results {
+    width: 100%; 
+  }
+
+  .results div {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+  }
+  .hightlight {
+	background-color: bisque;
+  }
