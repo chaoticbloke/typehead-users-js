@@ -18,6 +18,10 @@
     padding: 5px;
     border-bottom: 1px solid #ccc;
   }
-  .hightlight {
-	background-color: bisque;
+  article {
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+  }
+  .highlight {
+	  background-color: bisque;
   }

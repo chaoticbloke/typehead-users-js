@@ -15,7 +15,7 @@ function initializePage() {
     .catch((err) => console.log(err));
 }
 
-function populateUsers(filteredUsers) {
+function populateUsers(filteredUsers, inputValue) {
   resultsEle.innerHTML = "";
   if (filteredUsers) {
     users = filteredUsers;
@@ -25,10 +25,21 @@ function populateUsers(filteredUsers) {
     return;
   }
   const userInfoEls = users?.map((user) => {
-    const { name, country } = user;
-    return `<div><span>${name}</span> <span>${country}</span></div>`;
+    let { name, country } = user;
+    if (inputValue) {
+      //highlight the typed text
+      const regExp = new RegExp(inputValue, "gi");
+      name = name?.replace(
+        regExp,
+        (inputValue) => `<span class="highlight">${inputValue}</span>`
+      );
+      country = country?.replace(
+        regExp,
+        (inputValue) => `<span class="highlight">${inputValue}</span>`
+      );
+    }
+    return `<article>${name}, ${country}</article>`;
   });
-
   resultsEle.innerHTML = userInfoEls.join("");
 }
 
@@ -50,5 +61,5 @@ inputEle.addEventListener("input", (event) => {
     return user.name.match(regEx) || user.country.match(regEx);
   });
   console.log("filteredUsers", filteredUsers);
-  populateUsers(filteredUsers);
+  populateUsers(filteredUsers, value);
 });
